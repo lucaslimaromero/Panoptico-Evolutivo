@@ -1,4 +1,4 @@
-# Panoptico-Evolutivo
+![image](https://github.com/lucaslimaromero/Panoptico-Evolutivo/assets/101420277/924fa97a-72e9-4e62-b7ca-f0821057722b)# Panoptico-Evolutivo
  Projeto da Disciplina SSC0713 - Sistemas Evolutivos
 
 # Preâmbulo Teórico
@@ -21,9 +21,11 @@ A discrepância na capacidade de visão produz a desigualdade na `quantidade de 
 - O vigiado `nunca` sabe se está sendo visto ou não. Ele tem acesso apenas aos seus pensamentos e às tentativas de transgressão de outros vigiados, que são punidos (essa punição é necessária para que a dinâmica do sistema funcione, mas não implica necessariamente violência física).
 - Portanto, na dúvida, ele se `autodisciplina` e não transgride. Isso é muito mais barato para o vigilante, basta um pra vigiar outros 1000, 10.000! Perceba que não é mais necessário carrascos, elevados gastos de energia, de dinheiro para exercer poder. Nesse sistema contemporâneo, são `os próprios vigiados que se vigiam!`
 
-O Panóptico, no fim das contas, **não** é uma prisão! Ele é mais geral do que isso, é um dispositivo disciplinar, uma "fábrica de produção de disciplina". Nas celas metafóricas, a sociedade contemporânea coloca presidiários (prisão), estudantes (escola), loucos (manicômio), trabalhadores (fábricas), doentes (hospitais), qualquer um. O conceito Panoptismo surge, a priori, a partir da prisão, mas extrapola para diversos locais.
+O Panóptico, no fim das contas, **não** é uma prisão! Ele é mais geral do que isso, é um dispositivo disciplinar, uma "fábrica de produção de disciplina". Nas celas metafóricas, a sociedade contemporânea coloca presidiários (prisão), estudantes (escola), loucos (manicômio), trabalhadores (fábricas), doentes (hospitais), qualquer um. O conceito Panoptismo surge, a priori, a partir da prisão, mas extrapola para diversos locais.!
 
 # Associação com o Sistema Evolutivo
+
+![image](https://github.com/lucaslimaromero/Panoptico-Evolutivo/assets/101420277/dea60f98-e8aa-4441-87b3-a127251b0c60)
 
 - A ideia do projeto é baseado na implementação de uma interface gráfica que represente o Panóptico visto de cima, no caso de uma prisão, conforme o esboço a seguir.
 
