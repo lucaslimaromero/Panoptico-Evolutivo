@@ -1,4 +1,3 @@
-![image](https://github.com/lucaslimaromero/Panoptico-Evolutivo/assets/101420277/924fa97a-72e9-4e62-b7ca-f0821057722b)# Panoptico-Evolutivo
  Projeto da Disciplina SSC0713 - Sistemas Evolutivos
 
 # Preâmbulo Teórico
