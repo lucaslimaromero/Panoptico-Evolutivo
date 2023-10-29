@@ -1,4 +1,4 @@
- Projeto da Disciplina SSC0713 - Sistemas Evolutivos
+# Projeto da Disciplina SSC0713 - Sistemas Evolutivos
 
 # Preâmbulo Teórico
 O projeto se baseia na obra `"Vigiar de Punir"`, de _Michel Foucault_, mais especificamente no capítulo III da Terceira Parte, Panoptismo. A seguir, há uma explicação sobre a filosofia intrínseca ao tema, dedicada aos interessados que buscam se deleitar com a teoria de um grande maestro do conhecimento como Foucault.
