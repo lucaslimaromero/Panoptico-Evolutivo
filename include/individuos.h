@@ -1,9 +1,6 @@
 #ifndef INDIVIDUOS_H
 #define INDIVIDUOS_H
 
-#define windowWidth 900
-#define windowHeight 900
-
 #include <iostream>
 #include <cmath>
 

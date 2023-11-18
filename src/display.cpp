@@ -72,7 +72,22 @@ void drawCircle(float x_centro, float y_centro, float r, int num_segments) {
         glVertex2f(dx + x_centro, dy + y_centro);
     }
     glEnd();
-}  
+}
+
+void drawFilledCircle(float x_centro, float y_centro, float r, int num_segments) {
+    glBegin(GL_TRIANGLE_FAN);
+    
+    glVertex2f(x_centro, y_centro);  // centro do círculo
+    for (int i = 0; i <= num_segments; i++) {  // <= para fechar o círculo
+        float theta = 2.0f * 3.1415926f * float(i) / float(num_segments); // ângulo atual
+        float dx = r * cosf(theta); // cálculo do deslocamento x
+        float dy = r * sinf(theta); // cálculo do deslocamento y
+        glVertex2f(dx + x_centro, dy + y_centro);
+    }
+    glEnd();
+}
+
+
 
 void drawIndividuos(vector<Individuo> individuos) {
     // cout << "Drawing " << individuos.size() << " individuos..." << endl;
@@ -84,6 +99,12 @@ void drawIndividuos(vector<Individuo> individuos) {
         glVertex2f(individuos[i].x, individuos[i].y);
     }
     glEnd();
+}
+
+void drawString(const char* str) {
+    while (*str) {
+        glutBitmapCharacter(GLUT_BITMAP_9_BY_15, *str++);
+    }
 }
 
 

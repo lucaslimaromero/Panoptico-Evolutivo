@@ -13,32 +13,42 @@
 #include "individuos.h"
 #include "display.h"
 
-#define windowWidth 900
-#define windowHeight 900
+#define WINDOW_WIDTH 900
+#define WINDOW_HEIGHT 900
 #define TAM_POPULACAO 100
 
 #define RAIO_MENOR 0.55
 #define RAIO_MAIOR 0.7
+#define RAIO_TORRE 0.12
 #define PROB_MORTE 0.1
 
-vector<Individuo> individuos;
-
 using namespace std;
+
+// Definindo o vetor de individuos (populacao)
+vector<Individuo> individuos;
 
 void display() {
     glClear(GL_COLOR_BUFFER_BIT); // Limpa o buffer de cor
 
     glColor3f(0.0, 0.0, 0.0); // Define a cor para preto
     glLineWidth(3.0f);
+    // Desenhando as celas
     drawCircle(0.0, 0.0, RAIO_MAIOR, 100); // Desenha o círculo externo
     drawCircle(0.0, 0.0, RAIO_MENOR, 100); // Desenha o círculo interno
+
+    // Desenhando a torre central
+    glColor3f(0.3, 0.3, 0.3);
+    drawFilledCircle(0.0, 0.0, RAIO_TORRE, 100);
 
     // glColor3f(0.0, 0.0, 1.0);
     // glPointSize(3.0f);
     // drawRandomPointsInCrown(0.55, 0.7, 0.0, 0.0, 50); // Desenha os pontos aleatórios
-
     
     drawIndividuos(individuos);
+
+    glColor3f(0.0f, 0.0f, 0.0f);  // Defina a cor do texto para branco
+    glRasterPos2f(0.01, 0.9);  // Substitua x e y pela posição onde você deseja desenhar o texto
+    drawString("Genocidio acontecendo");
 
     glutSwapBuffers();
     // glFlush(); // Força a execução dos comandos OpenGL
@@ -47,12 +57,12 @@ void display() {
 // Cria alguns indivíduos (100)
 void initializeIndividuos() {
     for (int i = 0; i < TAM_POPULACAO; i++) {
-        float x = rand() % windowWidth;
-        float y = rand() % windowHeight;
+        float x = rand() % WINDOW_WIDTH;
+        float y = rand() % WINDOW_HEIGHT;
 
         // Normaliza as coordenadas x e y para a escala do OpenGL
-        x = 2.0f * ((x / windowWidth) - 0.5f);
-        y = - 2.0f * ((y / windowHeight) - 0.5f);
+        x = 2.0f * ((x / WINDOW_WIDTH) - 0.5f);
+        y = - 2.0f * ((y / WINDOW_HEIGHT) - 0.5f);
         float vx = (float)(rand() % 21 - 10) / 1000.0f;  // Direção aleatória entre -1 e 1
         float vy = (float)(rand() % 21 - 10) / 1000.0f;  // Direção aleatória entre -1 e 1
         Individuo novoIndividuo = {x, y, vx, vy};
@@ -74,35 +84,42 @@ void moveIndividuo(Individuo *ind){
     }
 }
 
-void timer(int) {
+
+void genocide(float raioMenor, float raioMaior, float probMorte){
+    for (int i = 0; i < int(individuos.size()); /* no increment here */) {
+        if (!dentroDaPrisao(&individuos[i], raioMenor, raioMaior) && (rand() / (float)RAND_MAX) < probMorte) {
+            // Remove o indivíduo do vetor
+            individuos.erase(individuos.begin() + i);
+        } else {
+            i++;
+        }
+    }
+}
+
+void timer(int value) {
     // Atualiza a posição dos indivíduos
     for(int i = 0; i < int(individuos.size()); i++){
         moveIndividuo(&individuos[i]);
     }
 
+    if ((value * 1000/60) % 3000 == 0) {  // A cada 3 segundos
+        genocide(RAIO_MENOR, RAIO_MAIOR, PROB_MORTE);
+    }
+
     // Redesenha a tela com os indivíduos em suas novas posições
     glutPostRedisplay(); // Essa funcao marca que a janela precisa ser redesenhada
 
-    glutTimerFunc(1000/60, timer, 0); // Essa funcao registra a funcao timer para ser chamada daqui a 1000/60 milissegundos
+    glutTimerFunc(1000/60, timer, value + 1); // Essa funcao registra a funcao timer para ser chamada daqui a 1000/60 milissegundos
 }
 
-void genocide(float raioMenor, float raioMaior, float probMorte){
-    for(int i = 0; i < int(individuos.size()); i++){
-        if(dentroDaPrisao(&individuos[i], raioMenor, raioMaior)){
-            float prob = (float)rand() / RAND_MAX;
-            if(prob < probMorte){
-                individuos.erase(individuos.begin() + i);
-            }
-        }
-    }
-}
+
 
 int main(int arc, char** argv){
 
     srand(42);
     glutInit(&arc, argv);
     glutInitDisplayMode(GLUT_RGB);
-    glutInitWindowSize(windowWidth, windowHeight);
+    glutInitWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
     glutInitWindowPosition(0, 0);
     glutCreateWindow("Panoptico Evolutivo");
 
