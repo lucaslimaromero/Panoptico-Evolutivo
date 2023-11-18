@@ -11,10 +11,11 @@
 #include <vector>
 
 #include <display.h>
+#include "individuos.h"
 
 // Função para inicializar parâmetros
 void init() {
-    glClearColor(1.0, 1.0, 1.0, 0.0);  // Cor de fundo (branco)
+    glClearColor(1.0, 1.0, 1.0, 1.0);  // Cor de fundo (branco)
     // gluOrtho2D(0.0, 500.0, 0.0, 500.0);  // Estabelece o sistema de coordenadas
 }
 
@@ -73,17 +74,17 @@ void drawCircle(float x_centro, float y_centro, float r, int num_segments) {
     glEnd();
 }  
 
-void display() {
-    glClear(GL_COLOR_BUFFER_BIT); // Limpa o buffer de cor
-
-    glColor3f(0.0, 0.0, 0.0); // Define a cor para preto
-    glLineWidth(3.0f);
-    drawCircle(0.0, 0.0, 0.7, 1000); // Desenha o círculo externo
-    drawCircle(0.0, 0.0, 0.55, 100); // Desenha o círculo interno
-
-    glColor3f(0.0, 0.0, 1.0);
-    glPointSize(3.0f);
-    drawRandomPointsInCrown(0.55, 0.7, 0.0, 0.0, 50); // Desenha os pontos aleatórios
-
-    glFlush(); // Força a execução dos comandos OpenGL
+void drawIndividuos(vector<Individuo> individuos) {
+    // cout << "Drawing " << individuos.size() << " individuos..." << endl;
+    glColor3f(1.0f, 0.0f, 0.0f); // Define a cor para vermelho
+    glPointSize(10.0f);
+    
+    glBegin(GL_POINTS);
+    for (int i = 0; i < int(individuos.size()); i++) {
+        glVertex2f(individuos[i].x, individuos[i].y);
+    }
+    glEnd();
 }
+
+
+
