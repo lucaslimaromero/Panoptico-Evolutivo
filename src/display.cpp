@@ -6,11 +6,10 @@
 
 #include <cstdlib>
 #include <ctime>
-#include <iostream>
 #include <cmath>
-#include <vector>
 
-#include <display.h>
+
+#include "display.h"
 #include "individuos.h"
 
 // Função para inicializar parâmetros

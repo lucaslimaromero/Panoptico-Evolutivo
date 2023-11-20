@@ -12,10 +12,12 @@
 
 #include "individuos.h"
 #include "display.h"
+#include "functions.h"
 
 #define WINDOW_WIDTH 900
 #define WINDOW_HEIGHT 900
 #define TAM_POPULACAO 100
+#define VELOCIDADE_BASE 0.5f
 
 #define RAIO_MENOR 0.55
 #define RAIO_MAIOR 0.7
@@ -40,58 +42,26 @@ void display() {
     glColor3f(0.3, 0.3, 0.3);
     drawFilledCircle(0.0, 0.0, RAIO_TORRE, 100);
 
-    // glColor3f(0.0, 0.0, 1.0);
-    // glPointSize(3.0f);
-    // drawRandomPointsInCrown(0.55, 0.7, 0.0, 0.0, 50); // Desenha os pontos aleatórios
     
     drawIndividuos(individuos);
+    // cout << "Tamanho da populacao: " << individuos.size() << endl;
 
-    glColor3f(0.0f, 0.0f, 0.0f);  // Defina a cor do texto para branco
-    glRasterPos2f(0.01, 0.9);  // Substitua x e y pela posição onde você deseja desenhar o texto
-    drawString("Genocidio acontecendo");
+    // glColor3f(0.0f, 0.0f, 0.0f);  // Defina a cor do texto para branco
+    // glRasterPos2f(0.01, 0.9);  // Substitua x e y pela posição onde você deseja desenhar o texto
+    // drawString("Genocidio acontecendo");
 
     glutSwapBuffers();
     // glFlush(); // Força a execução dos comandos OpenGL
 }
 
-// Cria alguns indivíduos (100)
-void initializeIndividuos() {
-    for (int i = 0; i < TAM_POPULACAO; i++) {
-        float x = rand() % WINDOW_WIDTH;
-        float y = rand() % WINDOW_HEIGHT;
-
-        // Normaliza as coordenadas x e y para a escala do OpenGL
-        x = 2.0f * ((x / WINDOW_WIDTH) - 0.5f);
-        y = - 2.0f * ((y / WINDOW_HEIGHT) - 0.5f);
-        float vx = (float)(rand() % 21 - 10) / 1000.0f;  // Direção aleatória entre -1 e 1
-        float vy = (float)(rand() % 21 - 10) / 1000.0f;  // Direção aleatória entre -1 e 1
-        Individuo novoIndividuo = {x, y, vx, vy};
-        cout << "x: " << x << " y: " << y << endl;
-        individuos.push_back(novoIndividuo);
-    }
-}
-
-void moveIndividuo(Individuo *ind){
-    ind->x += ind->vx;
-    ind->y += ind->vy;
-
-    // Verifica se o indivíduo atingiu a parede e inverte a direção se necessário
-    if (ind->x < -1.0f || ind->x > 1.0f) {
-        ind->vx = -ind->vx;
-    }
-    if (ind->y < -1.0f || ind->y > 1.0f) {
-        ind->vy = -ind->vy;
-    }
-}
-
 
 void genocide(float raioMenor, float raioMaior, float probMorte){
-    for (int i = 0; i < int(individuos.size()); /* no increment here */) {
-        if (!dentroDaPrisao(&individuos[i], raioMenor, raioMaior) && (rand() / (float)RAND_MAX) < probMorte) {
+    for (auto it = individuos.begin(); it != individuos.end(); ) {
+        if (!dentroDaPrisao(&(*it), raioMenor, raioMaior) && (rand() / (float)RAND_MAX) < probMorte) {
             // Remove o indivíduo do vetor
-            individuos.erase(individuos.begin() + i);
+            it = individuos.erase(it);
         } else {
-            i++;
+            ++it;
         }
     }
 }
@@ -112,8 +82,6 @@ void timer(int value) {
     glutTimerFunc(1000/60, timer, value + 1); // Essa funcao registra a funcao timer para ser chamada daqui a 1000/60 milissegundos
 }
 
-
-
 int main(int arc, char** argv){
 
     srand(42);
@@ -125,7 +93,7 @@ int main(int arc, char** argv){
 
     // Funcao para inicializar parametros
     init();
-    initializeIndividuos();
+    initializeIndividuos(individuos);
 
     glutDisplayFunc(display);
     glutTimerFunc(0, timer, 0); // Define a funcao de animacao

@@ -6,6 +6,7 @@
 using namespace std;
 
 #include <iostream>
+#include <vector>
 
 void init();
 void drawRandomPoints();
