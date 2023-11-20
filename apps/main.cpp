@@ -54,7 +54,7 @@ void display() {
     // glFlush(); // Força a execução dos comandos OpenGL
 }
 
-
+// Funcoes do sistema evolutivo
 void genocide(float raioMenor, float raioMaior, float probMorte){
     for (auto it = individuos.begin(); it != individuos.end(); ) {
         if (!dentroDaPrisao(&(*it), raioMenor, raioMaior) && (rand() / (float)RAND_MAX) < probMorte) {
@@ -72,8 +72,9 @@ void timer(int value) {
         moveIndividuo(&individuos[i]);
     }
 
-    if ((value * 1000/60) % 3000 == 0) {  // A cada 3 segundos
+    if ((value * 1000/60) % 100 == 0) {  // A cada 3 segundos
         genocide(RAIO_MENOR, RAIO_MAIOR, PROB_MORTE);
+        // Reposicao da populacao 
     }
 
     // Redesenha a tela com os indivíduos em suas novas posições
@@ -82,10 +83,10 @@ void timer(int value) {
     glutTimerFunc(1000/60, timer, value + 1); // Essa funcao registra a funcao timer para ser chamada daqui a 1000/60 milissegundos
 }
 
-int main(int arc, char** argv){
+int main(int argc, char** argv){
 
     srand(42);
-    glutInit(&arc, argv);
+    glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_RGB);
     glutInitWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
     glutInitWindowPosition(0, 0);

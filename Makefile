@@ -10,12 +10,11 @@ all: libed myapps
 
 libed: 
 	g++ -c $(SRC)/display.cpp -I $(INCLUDE) -o $(OBJ)/display.o $(flags)
-	g++ -c $(SRC)/individuos.cpp -I $(INCLUDE) -o $(OBJ)/individuos.o $(flags)
-	g++ -c $(SRC)/functions.cpp -I $(INCLUDE) -o $(OBJ)/functions.o $(flags)
+	g++ -c $(SRC)/individuos.cpp -I $(INCLUDE) -o $(OBJ)/individuos.o
+	g++ -c $(SRC)/functions.cpp -I $(INCLUDE) -o $(OBJ)/functions.o
 	
 myapps:
 	g++ $(APPS)/main.cpp $(OBJ)/*.o -I $(INCLUDE) -o $(BIN)/main $(flags)
-# gcc $(APPS)/main.c $(OBJ)/*.o -I $(INCLUDE) -o $(BIN)/main
 
 run:
 	$(BIN)/main
