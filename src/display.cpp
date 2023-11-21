@@ -34,6 +34,27 @@ void drawCircle(float x_centro, float y_centro, float r, int num_segments) {
     glEnd();
 }
 
+void drawDynamicLightBeam() {
+    glPushMatrix(); // Salva a matriz de transformação atual
+    // Rotaciona o triângulo
+    glColor3f(1.0f, 1.0f, 0.0f);
+    // Draw your triangle here
+    static float angle = 0.0f;
+    glRotatef(angle, 0.0f, 0.0f, 1.0f); // Rotaciona no eixo Z
+    angle += 0.5f; // Ajuste este valor para alterar a velocidade de rotação
+
+    // Desenha o triângulo
+    float height = RAIO_MENOR;
+    float width = height / 2.0f; // Ajuste este valor para alterar a largura do triângulo
+
+    glBegin(GL_TRIANGLES);
+        glVertex2f(0.0f, 0.0f); // Ponto central
+        glVertex2f(-width / 2.0f, -height); // Ponto inferior esquerdo
+        glVertex2f(width / 2.0f, -height); // Ponto inferior direito
+    glEnd();
+    glPopMatrix(); // Restaura a matriz de transformação original
+}
+
 void drawFilledCircle(float x_centro, float y_centro, float r, int num_segments) {
     glBegin(GL_TRIANGLE_FAN);
     

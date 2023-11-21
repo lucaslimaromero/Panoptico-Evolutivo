@@ -13,6 +13,7 @@ using namespace std;
 void drawCircle(float x_centro, float y_centro, float r, int num_segments);
 void drawFilledCircle(float x_centro, float y_centro, float r, int num_segments);
 void drawIndividuos(vector<Individuo> individuos);
+void drawDynamicLightBeam();
 
 void keyboard(unsigned char key, int x, int y);
 void drawString(const char* str);

@@ -13,7 +13,6 @@
 
 void initializeIndividuos(vector<Individuo> &individuos);
 void moveIndividuo(Individuo *ind);
-float calcularFitness(Individuo *ind);
 
 #endif
 

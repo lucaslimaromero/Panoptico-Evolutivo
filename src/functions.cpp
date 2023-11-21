@@ -12,6 +12,11 @@ bool pontoDentroDaTorre(float x, float y, float raioTorre){
 
 void initializeIndividuos(vector<Individuo> &individuos) {
     srand(time(0));
+    
+    if (!individuos.empty()) {
+        individuos.clear();
+    }
+
     for (int i = 0; i < TAM_POPULACAO; i++) {
         float x, y;
 
@@ -126,23 +131,4 @@ void moveIndividuo(Individuo *ind) {
     ind->fitness += recompensa;
 
     // Posicao atual do individuo
-}
-
-// Função para calcular o fitness de um indivíduo
-float calcularFitness(Individuo *ind) {
-    // 1- Componente baseada na posição (região da coroa)
-    float fitnessPosicao = 1.0f;
-
-    // Verifica se o indivíduo está dentro da coroa (ajuste os valores conforme necessário)
-    if (!dentroDaPrisao(ind, RAIO_MENOR, RAIO_MAIOR)) {
-        fitnessPosicao = 0.0f;  // Penaliza indivíduos fora da coroa
-    }
-
-    // 2- Componente baseada na taxa de decaimento
-    float fitnessDecaimento = ind->taxaDecaimento;
-
-    // Combina os dois componentes (pode ajustar pesos conforme necessário)
-    float fitnessFinal = fitnessPosicao * fitnessDecaimento;
-
-    return fitnessFinal;
 }

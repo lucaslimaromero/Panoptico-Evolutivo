@@ -36,3 +36,5 @@ Essa teoria é polêmica, como tudo o que envolve questões sociais, mas sua vis
 - Isso será feito repetidamente até chegar num ponto satisfatório em que os prisioneiros estão dentro de suas telas, e a "autodisciplina" foi instaurada.
 
 # Considerações finais
+
+
