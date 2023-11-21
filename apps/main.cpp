@@ -10,51 +10,24 @@
 #include <cmath>
 #include <vector>
 
+#define TEMPO_GERACAO 500
+
 #include "individuos.h"
 #include "display.h"
 #include "functions.h"
 
-#define WINDOW_WIDTH 900
-#define WINDOW_HEIGHT 900
-#define TAM_POPULACAO 1000
-#define VELOCIDADE_BASE 0.5f
-#define TAXA_MUTACAO 0.1f
+#include "defines.h"
 
-#define RAIO_MENOR 0.55
-#define RAIO_MAIOR 0.7
-#define RAIO_TORRE 0.12
-#define PROB_MORTE 0.1
-
-using namespace std;
+// --- Variaveis Globais ---
 
 // Definindo o vetor de individuos (populacao)
 vector<Individuo> individuos;
 
-void display() {
-    glClear(GL_COLOR_BUFFER_BIT); // Limpa o buffer de cor
+// Definindo a cor daquela populacao (detalhe visual)
+float corAtualGeracao[3] = {0.0f, 0.0f, 0.1f};
 
-    glColor3f(0.0, 0.0, 0.0); // Define a cor para preto
-    glLineWidth(3.0f);
-    // Desenhando as celas
-    drawCircle(0.0, 0.0, RAIO_MAIOR, 100); // Desenha o círculo externo
-    drawCircle(0.0, 0.0, RAIO_MENOR, 100); // Desenha o círculo interno
-
-    // Desenhando a torre central
-    glColor3f(0.3, 0.3, 0.3);
-    drawFilledCircle(0.0, 0.0, RAIO_TORRE, 100);
-
-    
-    drawIndividuos(individuos);
-    // cout << "Tamanho da populacao: " << individuos.size() << endl;
-
-    // glColor3f(0.0f, 0.0f, 0.0f);  // Defina a cor do texto para branco
-    // glRasterPos2f(0.01, 0.9);  // Substitua x e y pela posição onde você deseja desenhar o texto
-    // drawString("Genocidio acontecendo");
-
-    glutSwapBuffers();
-    // glFlush(); // Força a execução dos comandos OpenGL
-}
-
+// Geracao atual
+int numeroDaGeracao = 1;
 
 // Funcoes do sistema evolutivo
 
@@ -76,7 +49,7 @@ void mutacao(Individuo *ind){
     // Mutacao na taxa de decaimento
     if ((rand() / (float)RAND_MAX) < TAXA_MUTACAO) 
         // Adiciona um valor aleatório entre -0.001 e 0.001 à taxaDecaimento
-        ind->taxaDecaimento += ((rand() % 21 - 10) / 10000.0f);
+        ind->taxaDecaimento += ((rand() % 11) / 1000.0f);
     
 }
 
@@ -122,36 +95,71 @@ Individuo crossover(const Individuo& pai1, const Individuo& pai2) {
     return filho;
 }
 
+// --- Funcoes do OpenGL ---
+
+void display() {
+    glClear(GL_COLOR_BUFFER_BIT); // Limpa o buffer de cor
+
+ 
+
+    glColor3f(0.0, 0.0, 0.0); // Define a cor para preto
+    glLineWidth(3.0f);
+    // Desenhando as celas
+    drawCircle(0.0, 0.0, RAIO_MAIOR, 100); // Desenha o círculo externo
+    drawCircle(0.0, 0.0, RAIO_MENOR, 100); // Desenha o círculo interno
+
+    // Desenhando a torre central
+    glColor3f(0.3, 0.3, 0.3);
+    drawFilledCircle(0.0, 0.0, RAIO_TORRE, 100);
+
+    glColor3f(corAtualGeracao[0], corAtualGeracao[1], corAtualGeracao[2]); // Define a cor para vermelho
+    drawIndividuos(individuos);
+    // cout << "Tamanho da populacao: " << individuos.size() << endl;
+
+    // glColor3f(0.0f, 0.0f, 0.0f);  // Defina a cor do texto para branco
+    // glRasterPos2f(0.01, 0.9);  // Substitua x e y pela posição onde você deseja desenhar o texto
+    // drawString("Genocidio acontecendo");
+
+    
+
+    glutSwapBuffers();
+    // glFlush(); // Força a execução dos comandos OpenGL
+}
+
 void timer(int value) {
     // Atualiza a posição dos indivíduos
     for(int i = 0; i < int(individuos.size()); i++){
         moveIndividuo(&individuos[i]);
     }
 
-    if ((value * 1000/60) % 100 == 0) {  // A cada 3 segundos
+    if ((value * 1000/60) % TEMPO_GERACAO == 0) {  // A cada 3 segundos
         genocide(RAIO_MENOR, RAIO_MAIOR, PROB_MORTE);
         // Reposicao da populacao
 
         // Apenas gera filhos se a populacao nao estiver cheia
         while (individuos.size() < TAM_POPULACAO) {
-        // Seleção dos pais
-        int indicePai1 = selecaoTorneio();
-        int indicePai2 = selecaoTorneio();
+            // Seleção dos pais
+            int indicePai1 = selecaoTorneio();
+            int indicePai2 = selecaoTorneio();
 
-        // Crossover
-        Individuo pai1 = individuos[indicePai1];
-        Individuo pai2 = individuos[indicePai2];
-        Individuo filho = crossover(pai1, pai2);
+            // Crossover
+            Individuo pai1 = individuos[indicePai1];
+            Individuo pai2 = individuos[indicePai2];
+            Individuo filho = crossover(pai1, pai2);
 
-        // Mutação
-        mutacao(&filho);
+            // Mutação
+            mutacao(&filho);
 
-        // Adicionar o filho à população
-        individuos.push_back(filho);
-        // Printa a quantidade
-        cout << "Tamanho da populacao: " << individuos.size() << endl;
-    }
-        
+            // Adicionar o filho à população
+            individuos.push_back(filho);
+            // Printa a quantidade
+            cout << "Tamanho da populacao: " << individuos.size() << endl;
+        }
+
+        //  Atualiza a cor da geração
+        corAtualGeracao[0] = static_cast<float>(rand()) / RAND_MAX;
+        corAtualGeracao[1] = static_cast<float>(rand()) / RAND_MAX;
+        corAtualGeracao[2] = static_cast<float>(rand()) / RAND_MAX;
     }
 
     // Redesenha a tela com os indivíduos em suas novas posições
@@ -175,8 +183,8 @@ int main(int argc, char** argv){
     // Define o titulo da janela
     glutCreateWindow("Panoptico Evolutivo");
 
-    // Funcao para inicializar parametros
-    init();
+    // Funcao para limpar a tela
+    glClearColor(1.0, 1.0, 1.0, 1.0);
 
     // Funcao para inicializar o vetor global de individuos (populacao inicial)
     initializeIndividuos(individuos);

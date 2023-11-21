@@ -1,6 +1,9 @@
 #include "functions.h"
 
-// Esse arquivo contem as funcoes do processamento dos individuos
+#define GENERATE_VELOCITY ((float)(rand() % 50 - 10) / 1000.0f)
+#define GENERATE_TAXA_DECAIMENTO ((float)(rand() % 20 + 981) / 1000.0f)
+
+// Esse arquivo contem as funcoes do processamento dos individuos e suas funcoes auxiliares
 
 bool pontoDentroDaTorre(float x, float y, float raioTorre){
     float distanciaDoCentro = sqrt(x * x + y * y);
@@ -24,19 +27,20 @@ void initializeIndividuos(vector<Individuo> &individuos) {
 
         } while (pontoDentroDaTorre(x, y, RAIO_TORRE));
 
+        
         // Cria as velocidades em cada eixo
-        float vx = (float)(rand() % 21 - 10) / 10000.0f;  
-        float vy = (float)(rand() % 21 - 10) / 10000.0f;
+        float vx = GENERATE_VELOCITY;  
+        float vy = GENERATE_VELOCITY;
         
         // Criando um fitness
-        float fitness = (pontoDentroDaPrisao(x, y, RAIO_MENOR, RAIO_MAIOR)) ? 10.0f: 5.0f;
+        float fitness = (pontoDentroDaPrisao(x, y, RAIO_MENOR, RAIO_MAIOR)) ? 10.0f: 2.0f;
 
         // Randomiza o tipo de movimento
         int tipoDeMovimento = rand() % 3 + 1;
 
-        // Randomiza a taxa de decaimento entre 0.99 e 0.999
-        float taxaDecaimento = (float)(rand() % 901 + 99) / 1000.0f;
-        
+        // Randomiza a taxa de decaimento entre 0.960 e 0.992
+        float taxaDecaimento = GENERATE_TAXA_DECAIMENTO;
+
         Individuo novoIndividuo = {x, y, vx, vy, fitness, tipoDeMovimento, taxaDecaimento};   
         // cout << "x: " << x << " y: " << y << endl;
         individuos.push_back(novoIndividuo);
@@ -111,8 +115,8 @@ void moveIndividuo(Individuo *ind) {
             break;
     }
 
-    ind->vx *= TAXA_DECAIMENTO;
-    ind->vy *= TAXA_DECAIMENTO; 
+    ind->vx *= ind->taxaDecaimento;
+    ind->vy *= ind->taxaDecaimento; 
     ind->x += ind->vx;
     ind->y += ind->vy;
 

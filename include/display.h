@@ -8,9 +8,8 @@ using namespace std;
 #include <iostream>
 #include <vector>
 
-void init();
-void drawRandomPoints();
-void drawRandomPointsInCrown(float innerRadius, float outerRadius, float cx, float cy, int num_points);
+// Funcoes responsaveis pelos desenhos em OpenGL
+
 void drawCircle(float x_centro, float y_centro, float r, int num_segments);
 void drawFilledCircle(float x_centro, float y_centro, float r, int num_segments);
 void drawIndividuos(vector<Individuo> individuos);
