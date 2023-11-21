@@ -10,6 +10,7 @@
 
 #include "display.h"
 #include "individuos.h"
+#include "defines.h"
 
 void keyboard(unsigned char key, int x, int y) {
     switch (key) {
@@ -48,7 +49,7 @@ void drawFilledCircle(float x_centro, float y_centro, float r, int num_segments)
 
 void drawIndividuos(vector<Individuo> individuos) {
     // cout << "Drawing " << individuos.size() << " individuos..." << endl;
-    glPointSize(8.0f);
+    glPointSize(TAM_INDIVIDUOS);
     
     glBegin(GL_POINTS);
     for (int i = 0; i < int(individuos.size()); i++) {
@@ -59,7 +60,7 @@ void drawIndividuos(vector<Individuo> individuos) {
 
 void drawString(const char* str) {
     while (*str) {
-        glutBitmapCharacter(GLUT_BITMAP_9_BY_15, *str++);
+        glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, *str++);
     }
 }
 

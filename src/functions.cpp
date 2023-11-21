@@ -1,7 +1,7 @@
 #include "functions.h"
 
 #define GENERATE_VELOCITY ((float)(rand() % 50 - 10) / 1000.0f)
-#define GENERATE_TAXA_DECAIMENTO ((float)(rand() % 20 + 981) / 1000.0f)
+#define GENERATE_TAXA_DECAIMENTO ((float)(rand() % 20 + 961) / 1000.0f)
 
 // Esse arquivo contem as funcoes do processamento dos individuos e suas funcoes auxiliares
 
@@ -42,7 +42,6 @@ void initializeIndividuos(vector<Individuo> &individuos) {
         float taxaDecaimento = GENERATE_TAXA_DECAIMENTO;
 
         Individuo novoIndividuo = {x, y, vx, vy, fitness, tipoDeMovimento, taxaDecaimento};   
-        // cout << "x: " << x << " y: " << y << endl;
         individuos.push_back(novoIndividuo);
     }
 }
@@ -127,7 +126,6 @@ void moveIndividuo(Individuo *ind) {
     ind->fitness += recompensa;
 
     // Posicao atual do individuo
-    //cout << "x: " << ind->x << " y: " << ind->y << endl;
 }
 
 // Função para calcular o fitness de um indivíduo

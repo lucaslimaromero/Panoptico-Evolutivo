@@ -9,14 +9,15 @@
 #include <iostream>
 #include <cmath>
 #include <vector>
+#include <algorithm>
 
-#define TEMPO_GERACAO 500
 
 #include "individuos.h"
 #include "display.h"
 #include "functions.h"
 
 #include "defines.h"
+#define GENOCIDIO_MENU 1
 
 // --- Variaveis Globais ---
 
@@ -55,21 +56,22 @@ void mutacao(Individuo *ind){
 
 // Vamos implementar a funcao de selecao dos pais
 int selecaoTorneio(){
-    int tamTorneio = 5; // Tamanho do torneio (quantos individuos participarao)
+    int tamTorneio = 10; // Tamanho do torneio (quantos individuos participarao)
     int indiceVencedor = rand() % individuos.size(); // A priori, sorteia qualquer um
 
     for(int i = 0; i < tamTorneio; i++){
         int indiceCandidato = rand() % individuos.size();
-        if(individuos[indiceCandidato].fitness > individuos[indiceVencedor].fitness){
+        if(calcularFitness(&individuos[indiceCandidato]) > calcularFitness(&individuos[indiceVencedor])){
             indiceVencedor = indiceCandidato;
         }
     }
-    cout << "Indice vencedor: " << indiceVencedor << endl;
+    // cout << "Indice vencedor: " << indiceVencedor << endl;
     return indiceVencedor;
 }
 
 // Genocidio
 void genocide(float raioMenor, float raioMaior, float probMorte){
+    cout << "Genocidio acontecendo" << endl;
     for (auto it = individuos.begin(); it != individuos.end(); ) {
         if (!dentroDaPrisao(&(*it), raioMenor, raioMaior) && (rand() / (float)RAND_MAX) < probMorte) {
             // Remove o indivíduo do vetor
@@ -85,8 +87,14 @@ Individuo crossover(const Individuo& pai1, const Individuo& pai2) {
     Individuo filho;
 
     // Crossover nas características dos pais (aleatoriamente escolhendo)
-    filho.x = (rand() % 2 == 0) ? pai1.x : pai2.x;
-    filho.y = (rand() % 2 == 0) ? pai1.y : pai2.y;
+    if(rand() % 2 == 0){
+        filho.x = pai1.x;
+        filho.y = pai1.y;
+    } else{
+        filho.x = pai2.x;
+        filho.y = pai2.y;
+    }
+    
     filho.vx = (rand() % 2 == 0) ? pai1.vx : pai2.vx;
     filho.vy = (rand() % 2 == 0) ? pai1.vy : pai2.vy;
     filho.tipoDeMovimento = (rand() % 2 == 0) ? pai1.tipoDeMovimento : pai2.tipoDeMovimento;
@@ -97,10 +105,22 @@ Individuo crossover(const Individuo& pai1, const Individuo& pai2) {
 
 // --- Funcoes do OpenGL ---
 
+void mainMenuHandler(int choice){
+    if(choice == GENOCIDIO_MENU)
+        genocide(RAIO_MENOR, RAIO_MAIOR, PROB_MORTE);
+}
+
+// Funcoes do menu
+void menuInit(){
+    glutCreateMenu(mainMenuHandler);
+    glutAddMenuEntry("Genocidio", GENOCIDIO_MENU);
+    glutAttachMenu(GLUT_RIGHT_BUTTON);
+}
+
+// Funcoes do display
+
 void display() {
     glClear(GL_COLOR_BUFFER_BIT); // Limpa o buffer de cor
-
- 
 
     glColor3f(0.0, 0.0, 0.0); // Define a cor para preto
     glLineWidth(3.0f);
@@ -112,18 +132,25 @@ void display() {
     glColor3f(0.3, 0.3, 0.3);
     drawFilledCircle(0.0, 0.0, RAIO_TORRE, 100);
 
-    glColor3f(corAtualGeracao[0], corAtualGeracao[1], corAtualGeracao[2]); // Define a cor para vermelho
+    glColor3f(corAtualGeracao[0], corAtualGeracao[1], corAtualGeracao[2]); 
     drawIndividuos(individuos);
-    // cout << "Tamanho da populacao: " << individuos.size() << endl;
 
-    // glColor3f(0.0f, 0.0f, 0.0f);  // Defina a cor do texto para branco
-    // glRasterPos2f(0.01, 0.9);  // Substitua x e y pela posição onde você deseja desenhar o texto
-    // drawString("Genocidio acontecendo");
+    glColor3f(0.0, 0.0, 0.0);  // Defina a cor do texto para branco
+    glRasterPos2f(-0.95, 0.9);  // Posição do texto na janela
 
-    
+    // Converta o número da geração para uma string
+    string geracaoStr = "Geracao: " + to_string(numeroDaGeracao);
+
+    // Desenhe cada caractere do texto
+    drawString(geracaoStr.c_str());
 
     glutSwapBuffers();
-    // glFlush(); // Força a execução dos comandos OpenGL
+}
+
+void atualizaCorGeracao(){
+    corAtualGeracao[0] = static_cast<float>(rand()) / RAND_MAX;
+    corAtualGeracao[1] = static_cast<float>(rand()) / RAND_MAX;
+    corAtualGeracao[2] = static_cast<float>(rand()) / RAND_MAX; 
 }
 
 void timer(int value) {
@@ -133,8 +160,23 @@ void timer(int value) {
     }
 
     if ((value * 1000/60) % TEMPO_GERACAO == 0) {  // A cada 3 segundos
-        genocide(RAIO_MENOR, RAIO_MAIOR, PROB_MORTE);
+
+        // Gere um numero aleatorio entre 0 e 1
+        float probGenocide = (rand() / (float)RAND_MAX);
+        
+        if(probGenocide < PROBABILIDADE_GENOCIDIO)
+            genocide(RAIO_MENOR, RAIO_MAIOR, PROB_MORTE);
+        
         // Reposicao da populacao
+
+        // Ordena a população com base no fitness, ou seja os com maior fitness ficam no inicio do vetor
+        sort(individuos.begin(), individuos.end(), [](const Individuo& a, const Individuo& b) {
+            return a.fitness > b.fitness;
+        }); // Essa funcao pode ser a responsavel pela convergencia nao tao boa
+
+        // Remove os menos adaptados
+        int numeroRemovidos = max(0, int(TAM_POPULACAO * TAXA_REMOCAO));
+        individuos.resize(TAM_POPULACAO - numeroRemovidos);
 
         // Apenas gera filhos se a populacao nao estiver cheia
         while (individuos.size() < TAM_POPULACAO) {
@@ -152,14 +194,13 @@ void timer(int value) {
 
             // Adicionar o filho à população
             individuos.push_back(filho);
-            // Printa a quantidade
-            cout << "Tamanho da populacao: " << individuos.size() << endl;
         }
+        numeroDaGeracao++;
+        cout << "Tamanho da populacao: " << individuos.size() << endl;
+        cout << "Geracao atual: " << numeroDaGeracao << endl;
 
         //  Atualiza a cor da geração
-        corAtualGeracao[0] = static_cast<float>(rand()) / RAND_MAX;
-        corAtualGeracao[1] = static_cast<float>(rand()) / RAND_MAX;
-        corAtualGeracao[2] = static_cast<float>(rand()) / RAND_MAX;
+        atualizaCorGeracao();
     }
 
     // Redesenha a tela com os indivíduos em suas novas posições
@@ -167,6 +208,8 @@ void timer(int value) {
 
     glutTimerFunc(1000/60, timer, value + 1); // Essa funcao registra a funcao timer para ser chamada daqui a 1000/60 milissegundos
 }
+
+
 
 int main(int argc, char** argv){
 
@@ -185,7 +228,7 @@ int main(int argc, char** argv){
 
     // Funcao para limpar a tela
     glClearColor(1.0, 1.0, 1.0, 1.0);
-
+    menuInit();
     // Funcao para inicializar o vetor global de individuos (populacao inicial)
     initializeIndividuos(individuos);
 
