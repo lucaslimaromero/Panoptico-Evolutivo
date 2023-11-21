@@ -2,16 +2,27 @@
 
 // Esse arquivo contem as funcoes do processamento dos individuos
 
+bool pontoDentroDaTorre(float x, float y, float raioTorre){
+    float distanciaDoCentro = sqrt(x * x + y * y);
+    return distanciaDoCentro < raioTorre;
+}
+
 void initializeIndividuos(vector<Individuo> &individuos) {
     srand(time(0));
     for (int i = 0; i < TAM_POPULACAO; i++) {
-        // Cria as coordenadas x e y aleatoriamente
-        float x = rand() % WINDOW_WIDTH;
-        float y = rand() % WINDOW_HEIGHT;
+        float x, y;
 
-        // Normaliza as coordenadas x e y para a escala do OpenGL
-        x = 2.0f * ((x / WINDOW_WIDTH) - 0.5f);
-        y = -2.0f * ((y / WINDOW_HEIGHT) - 0.5f);
+        // Impede o indivíduo de nascer dentro da torre
+        do {
+            // Cria as coordenadas x e y aleatoriamente
+            x = rand() % WINDOW_WIDTH;
+            y = rand() % WINDOW_HEIGHT;
+
+            // Normaliza as coordenadas x e y para a escala do OpenGL
+            x = 2.0f * ((x / WINDOW_WIDTH) - 0.5f);
+            y = -2.0f * ((y / WINDOW_HEIGHT) - 0.5f);
+
+        } while (pontoDentroDaTorre(x, y, RAIO_TORRE));
 
         // Cria as velocidades em cada eixo
         float vx = (float)(rand() % 21 - 10) / 10000.0f;  
@@ -25,7 +36,7 @@ void initializeIndividuos(vector<Individuo> &individuos) {
 
         // Randomiza a taxa de decaimento entre 0.99 e 0.999
         float taxaDecaimento = (float)(rand() % 901 + 99) / 1000.0f;
-
+        
         Individuo novoIndividuo = {x, y, vx, vy, fitness, tipoDeMovimento, taxaDecaimento};   
         // cout << "x: " << x << " y: " << y << endl;
         individuos.push_back(novoIndividuo);
