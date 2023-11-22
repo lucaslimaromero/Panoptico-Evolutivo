@@ -20,7 +20,6 @@ myapps:
 run:
 	$(BIN)/main
 
-clear:
+clean:
 	rm $(BIN)/* $(OBJ)/*
 
-# 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
