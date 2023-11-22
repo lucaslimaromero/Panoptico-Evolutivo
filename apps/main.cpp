@@ -38,11 +38,11 @@ void mainMenuHandler(int choice){
         case GENOCIDIO_MENU:
             genocidio(individuos, RAIO_MENOR, RAIO_MAIOR, PROB_MORTE);
             break;
-        // case RESET_MENU:
-        //     initializeIndividuos(individuos);
-        //     numeroDaGeracao = 1;
-        //     glutPostRedisplay();
-        //     break;
+        case RESET_MENU:
+            initializeIndividuos(individuos);
+            numeroDaGeracao = 1;
+            glutPostRedisplay();
+            break;
     }
 }
 
@@ -50,7 +50,7 @@ void mainMenuHandler(int choice){
 void menuInit(){
     glutCreateMenu(mainMenuHandler);
     glutAddMenuEntry("Genocidio", GENOCIDIO_MENU);
-    // glutAddMenuEntry("Reset", RESET_MENU);
+    glutAddMenuEntry("Reset", RESET_MENU);
     glutAttachMenu(GLUT_RIGHT_BUTTON);
 }
 
