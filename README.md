@@ -34,9 +34,19 @@ Essa teoria é polêmica, como tudo o que envolve questões sociais, mas sua vis
 - Será representada no centro a torre de vigia que estará teoricamente vigiando a todo momento, aquilo que a luz está apontando.
 - Isso será feito repetidamente até chegar num ponto satisfatório em que os prisioneiros estão dentro de suas telas, e a "autodisciplina" foi instaurada.
 
+<div align="center">
+    <img style="width: 40%;" src="https://cdn.discordapp.com/attachments/602350214740967426/1176706843599458364/ger4.png?ex=656fd8a5&is=655d63a5&hm=7a8a38ac0f6c0b5442f50ca77fbcec72f49b5cb9b92aed4fd7df13d89550db47&"/>
+    <img style="width: 40%;" src="https://cdn.discordapp.com/attachments/602350214740967426/1176706843872084038/ger16.png?ex=656fd8a5&is=655d63a5&hm=3989f9effb921d35aa9caddee3290cf67ead5bbb09a4482c16464dcad4a99857&"/>
+    <br>
+    <img style="width: 40%;" src="https://cdn.discordapp.com/attachments/602350214740967426/1176706844123738302/ger22.png?ex=656fd8a5&is=655d63a5&hm=e96710f16d95acdb45db39c50a15f26c010d4235a23afdc34a5c1c17507d414a&"/>
+    <img style="width: 40%;" src="https://cdn.discordapp.com/attachments/602350214740967426/1176706844429930606/ger27.png?ex=656fd8a5&is=655d63a5&hm=cc8f9439279d12bd4ba44d1e9468270cfd480623bea6cf806e58a30bc549c903&"/>
+</div>
+
 # Como rodar o projeto
 
 ## Instalação
+
+Instalando os pacotes de desenvolvimento do OpenGL no Ubuntu
 
 ```
 $ sudo apt-get install mesa-common-dev
@@ -57,5 +67,8 @@ Para rodar o programa
 ```
 $ make run
 ```
+# Autor
 
+| [<img loading="lazy" src="https://avatars.githubusercontent.com/u/101420277?v=4" width=115><br><sub>Lucas Lima Romero</sub>](https://github.com/luckera) |
+| :---: |
 
