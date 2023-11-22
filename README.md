@@ -2,7 +2,7 @@
 
 ## Preâmbulo Teórico
 O projeto se baseia na obra `"Vigiar e Punir"`, de _Michel Foucault_, mais especificamente no capítulo III da Terceira Parte, **Panoptismo**. A seguir, há uma explicação sobre a filosofia intrínseca ao tema, dedicada aos interessados que buscam se deleitar com a teoria. 
-- A obra, como um todo, se debruça sobre o `nascimento das prisões modernas`, em que a violência e o suplício comuns da Idade Média, foram substituídos por mecanismos disciplinares de controle dos corpos, como é visto na atualidade.
+- A obra, como um todo, se debruça sobre o `nascimento das prisões modernas`, em que a violência e o suplício comuns da Idade Média, foram substituídos por mecanismos disciplinares de controle de corpos, como é visto na atualidade.
 - `Panoptismo` é o conceito associado a outra palavra: o **Panóptico** (Pan: tudo; óptico: olhar, ao pé da letra seria um olhar geral). Este, por sua vez, é um modelo arquitetônico mais antigo, popularizado por um famoso filósofo utilitarista chamado _Jeremy Bentham_ (quem assistiu The Good Place, sabe).
 
 
@@ -13,15 +13,15 @@ Veja algumas representações desse espaço.
   <img src="https://cdn.discordapp.com/attachments/602350214740967426/1176870342480896010/prisao_cuba_modelo_panoptico.png?ex=657070ea&is=655dfbea&hm=e0e72e4ee08afc370fab5a7fcf37f7e21bd90e0dbca7c8fa69255f7940d1594d&" width="400" style="margin: 0 auto;" />
 </div>
 
-A ideia desse local, é que:
+A ideia desse local, é que: 
 - O `vigilante` vê, sem ser visto, no alto da torre, por meio de um jogo de luzes.
-- O `vigiado` é visto sem ver e estão isolados nas sua celas.
+- Os `vigiados` são vistos sem ver e estão isolados em suas celas.
 
 A discrepância na capacidade de visão produz a desigualdade na `quantidade de poder`.
 - O vigiado `nunca` sabe se está sendo visto ou não. Ele tem acesso apenas aos seus pensamentos e às tentativas de transgressão de outros vigiados, que são punidos (essa punição é necessária para que a dinâmica do sistema funcione, mas não implica necessariamente violência física).
-- Portanto, na dúvida, ele se `autodisciplina` e não transgride. Isso é muito incondicionalmente mais vantajoso para o vigilante, basta um pra vigiar outros 1000, 10.000! Perceba que não é mais necessário carrascos, elevados gastos de energia, de dinheiro para exercer poder. Nesse sistema contemporâneo, são `os próprios vigiados que se vigiam!`
+- Portanto, na dúvida, ele se `autodisciplina` e não transgride. Isso é incondicionalmente mais vantajoso para o vigilante, basta um pra vigiar outros 1000, 10.000! Perceba que não é mais necessário carrascos, elevados gastos de energia, de dinheiro para exercer poder. Nesse sistema contemporâneo, são `os próprios vigiados que se vigiam!`
 
-O Panóptico, no fim das contas, **não** é uma prisão! Ele é mais geral do que isso, é um dispositivo disciplinar, uma **"fábrica de produção de disciplina"**. Nas celas metafóricas, a sociedade contemporânea coloca presidiários (prisão), estudantes (escola), loucos (manicômio), trabalhadores (fábricas), doentes (hospitais), qualquer um. O conceito Panoptismo surge, a priori, a partir da prisão, mas extrapola para diversos locais!
+O Panóptico, no fim das contas, **não** é uma prisão! Ele é mais geral do que isso, é um dispositivo disciplinar, uma **"fábrica de produção de disciplina"**. Nas celas metafóricas, a sociedade contemporânea coloca presidiários (prisão), estudantes (escola), loucos (manicômio), trabalhadores (fábricas), doentes (hospitais), qualquer um. O conceito Panoptismo surge, a priori, a partir da prisão, mas extrapola para diversos espaços sociais!
 
 ## Associação com o Sistema Evolutivo <a name="associação-com-o-sistema-evolutivo"></a>
 
@@ -74,7 +74,7 @@ $ make run
 
 ## Considerações Finais
 
-A elegância, aplicabilidade e nitidez dessa teoria na contemporaneidade foram alguns dos fatores motivadores que impulsionaram a reinterpretação e expansão do Panóptico para o âmbito `computacional` e tecnológico. Nesse contexto, o Panóptico transcende seu contexto original, transformando-se em um cenário conceitual que serve de **pano de fundo** para o estudo e desenvolvimento de `Algoritmos Evolutivos`.
+A elegância, aplicabilidade e nitidez dessa teoria na contemporaneidade foram alguns dos fatores motivadores que impulsionaram a minha reinterpretação e expansão do Panóptico para o âmbito **computacional **e** tecnológico**. Nesse contexto, o Panóptico transcende seu contexto original, transformando-se em um cenário conceitual que serve de **pano de fundo** para o estudo e desenvolvimento de `Algoritmos Evolutivos`.
 
 A adaptação do Panóptico para a `esfera algorítmica` não apenas redefine seu escopo, mas também representa uma busca ativa por compreensão e inovação. Esse movimento reflete não apenas uma mudança conceitual, mas também destaca a **versatilidade e a relevância** contínua desse conceito seminal na era digital.
 
