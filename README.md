@@ -25,14 +25,13 @@ O Panóptico, no fim das contas, **não** é uma prisão! Ele é mais geral do q
 Essa teoria é polêmica, como tudo o que envolve questões sociais, mas sua visualização será o tema desse projeto.
 
 # Associação com o Sistema Evolutivo
-<img src="https://cdn.discordapp.com/attachments/671880040929034271/1168323338230317139/image.png?ex=655158e6&is=653ee3e6&hm=6a235b5dfce999e311045f74c1379565e1097c35a6698dc1f7996831d0e246e0&" width="800" style="margin: auto;" />
 
 - A ideia do projeto é baseado na implementação de uma interface gráfica que represente o Panóptico visto de cima, no caso de uma prisão, conforme o esboço a seguir.
 
 <img src="https://cdn.discordapp.com/attachments/602350214740967426/1168285032624955402/image.png?ex=65513539&is=653ec039&hm=5ab7332ce9113959737801ea298a9469d58b94f33f049701018bc935a942789c&" width="400" style="margin: auto;" />
 
 - A dinâmica do panóptico evolutivo é baseada na movimentação de pontos aleatórios na tela, representando os vigiados. Esses pontos podem ou não estar dentro da cela. Se não estiverem, poderão ser punidos.
-- Será representada no centro a torre de vigia que estará teoricamente vigiando a todo momento, aquilo que a luz está apontando. Mas, para melhor representar o panóptico, no sentido em que não necessariamente o vigilante estará vendo, em momentos aleatórios aquilo que a luz aponta será punido. A cada geração, haverá uma certa taxa de passagem da luz e serão eliminados os vigiados que forem vistos fora de suas celas.
+- Será representada no centro a torre de vigia que estará teoricamente vigiando a todo momento, aquilo que a luz está apontando.
 - Isso será feito repetidamente até chegar num ponto satisfatório em que os prisioneiros estão dentro de suas telas, e a "autodisciplina" foi instaurada.
 
 # Como rodar o projeto
