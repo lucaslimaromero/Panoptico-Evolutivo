@@ -93,4 +93,3 @@ float calcularFitness(Individuo *ind) {
 
     return fitnessFinal;
 }
-

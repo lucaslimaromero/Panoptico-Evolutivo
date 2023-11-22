@@ -1,12 +1,12 @@
 #ifndef DEFINES_H
 #define DEFINES_H
 
-#define TEMPO_GERACAO 1000
+#define TEMPO_GERACAO 500
 
 #define WINDOW_WIDTH 900
 #define WINDOW_HEIGHT 900
 
-#define TAM_POPULACAO 10000
+#define TAM_POPULACAO 2500
 #define TAM_INDIVIDUOS 10.0f
 
 #define VELOCIDADE_ANGULAR 0.01f
@@ -19,8 +19,8 @@
 
 #define PROBABILIDADE_GENOCIDIO 0.01f
 #define PROB_MORTE 0.2f
-#define TAXA_MUTACAO 0.1f
-#define TAXA_REMOCAO 0.1f
+#define TAXA_MUTACAO 0.2f
+#define TAXA_REMOCAO 0.05f
 
 using namespace std;
 

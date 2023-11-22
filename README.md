@@ -35,6 +35,28 @@ Essa teoria é polêmica, como tudo o que envolve questões sociais, mas sua vis
 - Será representada no centro a torre de vigia que estará teoricamente vigiando a todo momento, aquilo que a luz está apontando. Mas, para melhor representar o panóptico, no sentido em que não necessariamente o vigilante estará vendo, em momentos aleatórios aquilo que a luz aponta será punido. A cada geração, haverá uma certa taxa de passagem da luz e serão eliminados os vigiados que forem vistos fora de suas celas.
 - Isso será feito repetidamente até chegar num ponto satisfatório em que os prisioneiros estão dentro de suas telas, e a "autodisciplina" foi instaurada.
 
-# Considerações finais
+# Como rodar o projeto
+
+## Instalação
+
+```
+$ sudo apt-get install mesa-common-dev
+$ sudo apt-get install freeglut3-dev
+```
+
+## Execução
+
+Para compilar o programa
+
+```
+$ cd Panoptico-Evolutivo
+$ make clean
+$ make
+```
+
+Para rodar o programa
+```
+$ make run
+```
 
 

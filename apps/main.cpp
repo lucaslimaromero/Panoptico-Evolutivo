@@ -73,13 +73,17 @@ void display() {
     drawIndividuos(individuos);
 
     glColor3f(0.0, 0.0, 0.0);  // Defina a cor do texto para branco
-    glRasterPos2f(-0.95, 0.9);  // Posição do texto na janela
 
     // Converta o número da geração para uma string
     string geracaoStr = "Geracao: " + to_string(numeroDaGeracao);
 
     // Desenhe cada caractere do texto
-    drawString(geracaoStr.c_str());
+    for (float dx = -0.002f; dx <= 0.002f; dx += 0.002f) {
+        for (float dy = -0.002f; dy <= 0.002f; dy += 0.002f) {
+            glRasterPos2f(-0.95f + dx, 0.9f + dy);
+            drawString(geracaoStr.c_str());
+        }
+    }
 
     glutSwapBuffers();
 }
@@ -96,7 +100,7 @@ void timer(int value) {
         moveIndividuo(&individuos[i]);
     }
 
-    if ((value * 1000/60) % TEMPO_GERACAO == 0) {  // A cada 3 segundos
+    if ((value * 1000 / 60) % TEMPO_GERACAO == 0) {  // A cada 3 segundos
 
         float probGenocidio = (rand() / (float)RAND_MAX);
     
