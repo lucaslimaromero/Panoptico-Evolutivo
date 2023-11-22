@@ -1,6 +1,6 @@
 # Projeto da Disciplina SSC0713 - Sistemas Evolutivos
 
-# Preâmbulo Teórico
+## Preâmbulo Teórico
 O projeto se baseia na obra `"Vigiar e Punir"`, de _Michel Foucault_, mais especificamente no capítulo III da Terceira Parte, **Panoptismo**. A seguir, há uma explicação sobre a filosofia intrínseca ao tema, dedicada aos interessados que buscam se deleitar com a teoria.
 - A obra, como um todo, se debruça sobre o `nascimento das prisões modernas`, em que a violência e o suplício comuns da Idade Média, foram substituídos por mecanismos disciplinares de controle dos corpos, como é visto na atualidade.
 - `Panoptismo` é o conceito associado a outra palavra: o **Panóptico** (Pan: tudo; óptico: olhar, ao pé da letra seria um olhar geral). Este, por sua vez, é um modelo arquitetônico mais antigo, popularizado por um famoso filósofo utilitarista chamado _Jeremy Bentham_ (quem assistiu The Good Place, sabe).
@@ -22,9 +22,7 @@ A discrepância na capacidade de visão produz a desigualdade na `quantidade de 
 
 O Panóptico, no fim das contas, **não** é uma prisão! Ele é mais geral do que isso, é um dispositivo disciplinar, uma **"fábrica de produção de disciplina"**. Nas celas metafóricas, a sociedade contemporânea coloca presidiários (prisão), estudantes (escola), loucos (manicômio), trabalhadores (fábricas), doentes (hospitais), qualquer um. O conceito Panoptismo surge, a priori, a partir da prisão, mas extrapola para diversos locais!
 
-Essa teoria é polêmica, como tudo o que envolve questões sociais, mas sua visualização será o tema desse projeto.
-
-# Associação com o Sistema Evolutivo
+## Associação com o Sistema Evolutivo
 
 A ideia do projeto é baseado na implementação de uma interface gráfica que represente o Panóptico visto de cima, no caso de uma prisão, conforme o esboço a seguir.
 <div align="center">
@@ -45,11 +43,11 @@ A seguir estão anexadas prints que evidenciam a **evolução** de uma populaç�
     <img style="width: 40%;" src="https://cdn.discordapp.com/attachments/602350214740967426/1176706844429930606/ger27.png?ex=656fd8a5&is=655d63a5&hm=cc8f9439279d12bd4ba44d1e9468270cfd480623bea6cf806e58a30bc549c903&"/>
 </div>
 
-# Como rodar o projeto
+## Como rodar o projeto
 
 Digite os seguintes comandos no seu terminal
 
-## Instalação
+### Instalação
 
 Instalando os pacotes de desenvolvimento do OpenGL no Ubuntu
 
@@ -58,7 +56,7 @@ $ sudo apt-get install mesa-common-dev
 $ sudo apt-get install freeglut3-dev
 ```
 
-## Execução
+### Execução
 
 Para compilar o programa
 
@@ -72,8 +70,15 @@ Para rodar o programa
 ```
 $ make run
 ```
-# Autor
 
-| [<img loading="lazy" src="https://avatars.githubusercontent.com/u/101420277?v=4" width=115><br><sub>Lucas Lima Romero</sub>](https://github.com/luckera) |
+## Considerações Finais
+
+A elegância, aplicabilidade e nitidez dessa teoria na contemporaneidade foram alguns dos fatores motivadores que impulsionaram a reinterpretação e expansão do Panóptico para o âmbito `computacional` e tecnológico. Nesse contexto, o Panóptico transcende seu contexto original, transformando-se em um cenário conceitual que serve de **pano de fundo** para o estudo e desenvolvimento de `Algoritmos Evolutivos`.
+
+A adaptação do Panóptico para a `esfera algorítmica` não apenas redefine seu escopo, mas também representa uma busca ativa por compreensão e inovação. Esse movimento reflete não apenas uma mudança conceitual, mas também destaca a **versatilidade e a relevância** contínua desse conceito seminal na era digital.
+
+## Autor
+
+| [<img loading="lazy" src="https://avatars.githubusercontent.com/u/101420277?v=4" width=115><br><sub>Lucas Lima Romero</sub>](https://github.com/lucaslimaromero) |
 | :---: |
 
