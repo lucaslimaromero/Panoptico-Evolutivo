@@ -53,8 +53,8 @@ Digite os seguintes comandos no seu terminal
 Instalando os pacotes de desenvolvimento do OpenGL no Ubuntu
 
 ```
-$ sudo apt-get install mesa-common-dev
-$ sudo apt-get install freeglut3-dev
+sudo apt-get install mesa-common-dev
+sudo apt-get install freeglut3-dev
 ```
 
 ### Execução
@@ -62,14 +62,14 @@ $ sudo apt-get install freeglut3-dev
 Para compilar o programa
 
 ```
-$ cd Panoptico-Evolutivo
-$ make clean
-$ make
+cd Panoptico-Evolutivo
+make clean
+make
 ```
 
 Para rodar o programa
 ```
-$ make run
+make run
 ```
 
 ## Considerações Finais
