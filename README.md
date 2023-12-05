@@ -13,6 +13,10 @@
   </table>
 </div>
 
+##
+
+Explicação do Projeto em vídeo: [Clique aqui para ver o vídeo!](https://youtu.be/RPUOK69oI3A)
+
 ## Preâmbulo Teórico
 O projeto se baseia na obra `"Vigiar e Punir"`, de _Michel Foucault_, mais especificamente no capítulo III da Terceira Parte, **Panoptismo**. A seguir, há uma explicação sobre a filosofia intrínseca ao tema, dedicada aos interessados que buscam se deleitar com a teoria. 
 - A obra, como um todo, se debruça sobre o `nascimento das prisões modernas`, em que a violência e o suplício comuns da Idade Média, foram substituídos por mecanismos disciplinares de controle de corpos, como é visto na atualidade.
