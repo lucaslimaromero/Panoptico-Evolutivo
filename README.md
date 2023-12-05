@@ -1,4 +1,17 @@
-# Projeto da Disciplina SSC0713 - Sistemas Evolutivos
+# Projeto da Disciplina SSC0713 - Sistemas Evolutivos e Aplicados à Robótica
+
+<div align="center">
+  <table style="width: 60%; text-align: center;">
+    <tr>
+      <th>Professor</th>
+      <th>Aluno</th>
+    </tr>
+    <tr>
+      <td>Eduardo do Valle Simões </td>
+      <td>Lucas Lima Romero</td>
+    </tr>
+  </table>
+</div>
 
 ## Preâmbulo Teórico
 O projeto se baseia na obra `"Vigiar e Punir"`, de _Michel Foucault_, mais especificamente no capítulo III da Terceira Parte, **Panoptismo**. A seguir, há uma explicação sobre a filosofia intrínseca ao tema, dedicada aos interessados que buscam se deleitar com a teoria. 
