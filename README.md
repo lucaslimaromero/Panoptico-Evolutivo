@@ -61,6 +61,13 @@ A seguir estão anexadas prints que evidenciam a **evolução** de uma populaç�
     <img style="width: 40%;" src="https://cdn.discordapp.com/attachments/602350214740967426/1176706844429930606/ger27.png?ex=656fd8a5&is=655d63a5&hm=cc8f9439279d12bd4ba44d1e9468270cfd480623bea6cf806e58a30bc549c903&"/>
 </div>
 
+# Gráfico do Fitness do melhor indivíduo ao longo das gerações
+
+<p align="center">
+  <img width="600" height="400" src="https://github.com/lucaslimaromero/Panoptico-Evolutivo/blob/main/grafico-fitness.png" alt="Gráfico fitness versus gerações">
+</p>
+
+
 ## Como rodar o projeto
 
 Digite os seguintes comandos no seu terminal
